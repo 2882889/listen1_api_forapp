@@ -167,11 +167,12 @@ function NeteaseFactory() {
 
           tracks.push(defaultTrack);
         });
+        
         return resolve({
           info,
           tracks,
         });
-      });
+      }).catch(error => console.log('caught', error));
     });
   }
 

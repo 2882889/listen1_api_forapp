@@ -38,6 +38,7 @@ function getProviderByName(sourceName) {
 
 function getProviderByItemId(itemId) {
   const prefix = itemId.slice(0, 2);
+
   if (prefix === 'ne') {
     return NeteaseFactory;
   }
@@ -86,6 +87,7 @@ if (typeof window === 'undefined') {
 }
 
 function apiGet(url, httpClient, pfn, cookieProvider) {
+
   // default auto set
   if (httpClient === undefined || httpClient === null) {
     // eslint-disable-next-line no-param-reassign
@@ -99,7 +101,6 @@ function apiGet(url, httpClient, pfn, cookieProvider) {
     // eslint-disable-next-line no-param-reassign
     cookieProvider = globalCookieProvider;
   }
-
 
   // router
   if (url.search('/show_playlist') !== -1) {
@@ -127,6 +128,7 @@ function apiGet(url, httpClient, pfn, cookieProvider) {
     const provider = getProviderByItemId(trackId);
     return provider.bootstrapTrack(trackId, httpClient, pfn, cookieProvider);
   }
+
   return null;
 }
 
